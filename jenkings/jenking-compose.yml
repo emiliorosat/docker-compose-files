@@ -1,13 +1,14 @@
-version: "3.9"
+name: jenkins
+
 services:
-  jenkings:
+  jenkins:
     image: jenkins/jenkins:lts
-    privilegied: false
+    #privilegied: false
     user: root
     ports:
       - 8080:8080
       - 5000:5000
     container_name: jenkins
     volumes:
-      - /home/root/jenkins/compose/configuration:var/jenkins_home
+     # - /home/root/jenkins/compose/configuration:var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock

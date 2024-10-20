@@ -1,0 +1,18 @@
+name: sonarqube
+
+services: 
+  sonarqube:
+    image: sonarqube:lts-community
+    container_name: sonarqube
+    ports:
+      - 9000:9000
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=false
+      #- SONAR_JDBC_USERNAME=
+      #- SONAR_JDBC_PASSWORD=
+      #- SONAR_JDBC_URL=jdbc:postgresql://localhost/sonarqube?currentSchema=my_schema
+      #- SONAR_WEB_PORT=9000
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_logs:/opt/sonarqube/logs
+      - sonarqube_extensions:/opt/sonarqube/extensions
