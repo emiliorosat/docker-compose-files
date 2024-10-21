@@ -3,7 +3,7 @@ name: jenkins
 services:
   jenkins:
     image: jenkins/jenkins:lts
-    #privilegied: false
+    privileged: true
     user: root
     ports:
       - 8080:8080
