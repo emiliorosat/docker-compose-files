@@ -6,8 +6,18 @@ services:
     restart: always
     container_name: pgadmin4
     ports:
-      - 8080:8080
+      - 8080:80
     environment:
       - PGADMIN_LISTEN_PORT=8080
-      - PGADMIN_DEFAULT_PASSWORD=
-      - PGADMIN_DEFAULT_EMAIL=
+      - PGADMIN_DEFAULT_PASSWORD=password
+      - PGADMIN_DEFAULT_EMAIL=admin@mail.local
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+
+volumes:
+  pgadmin:
+    driver: local
+    driver_opts:
+      type: none
+      device: /var/lib/pgadmin
+      o: bind
