@@ -3,12 +3,21 @@ name: jenkins
 services:
   jenkins:
     image: jenkins/jenkins:lts
+    container_name: jenkins
     privileged: true
+    restart: always
     user: root
     ports:
       - 8080:8080
       - 5000:5000
-    container_name: jenkins
+    
     volumes:
-     # - /home/root/jenkins/compose/configuration:var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
+      - jenkins:/var/jenkins_home
+     # - /var/run/docker.sock:/var/run/docker.sock
+volumes:
+  jenkins:
+    driver: local
+    driver_opts:
+      type: none
+      device: /var/vol-jenkins
+      o: bind
