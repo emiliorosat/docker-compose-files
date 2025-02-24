@@ -1,0 +1,20 @@
+name: homeassistant
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    volumes:
+      - homeassistant:/config
+      #- /etc/localtime:/etc/localtime:ro
+      #- /run/dbus:/run/dbus:ro
+    restart: unless-stopped
+    privileged: true
+    #network_mode: bridge
+
+volumes:
+  homeassistant:
+    driver: local
+#    driver_opts:
+#      type: none
+#      device: homeassistant
+#      o: bind
