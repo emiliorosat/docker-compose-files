@@ -19,5 +19,5 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /var/vol-jenkins
+      device: vol-jenkins
       o: bind
